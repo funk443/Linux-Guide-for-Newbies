@@ -1,6 +1,6 @@
 #+TITLE: Linux新手指南
 #+AUTHOR: CToID
-#+OPTIONS: num:nil
+#+OPTIONS: num:nil toc:nil
 
 Copyright (C)  2022  CToID
 
@@ -11,7 +11,7 @@ with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 A copy of the license is included in the section entitled "GNU
 Free Documentation License".
 
-* 目錄 :TOC_1:
+* 目錄 :TOC_1:noexport:
 - [[#前言][前言]]
 - [[#linux的基本知識][Linux的基本知識]]
 - [[#安裝linux][安裝Linux]]
@@ -114,10 +114,121 @@ Linux發行版是讓Linux最與眾不同的地方，現今，有非常非常多�
   它是我現在用的發行版，我只能跟你說，我愛死它了。
   *如果你以後有了一定的Linux使用經驗後，請一定要試看看Void。*
   
-** 桌面環境（Desktop Environment）
+** 桌面環境（Desktop Environment）和視窗管理員（Window Manager）
+桌面環境是Linux日常使用中不可或缺的一部份。那什麼是桌面環境呢？
+
+簡單來說，就是有人幫你整合一個日常使用的桌面所需要的一切軟體，包括但不限於後面會提到的視窗管理員、音效系統、系統面板和檔案管理員等等日常會用到的程式。
+而Linux上有很多種桌面環境可以選擇，有長得像Windows的，有長得像MacOS的，也有有自己特色的，基本上每種桌面環境長得都不太一樣。
+所以如果你覺得今天這個桌面環境看不順眼了，你隨時可以換到其他的桌面環境。
+這也是用Linux的好處之一，那麼多桌面環境，總有一種你喜歡。更別提Linux上的桌面環境大多都可以高度自訂，變成你想要的樣子。
+
+目前在Linux上有兩個主流的熱門桌面環境，KDE Plasma和GNOME，這些是大部份發行版預設使用的桌面環境。
+其他還有一些比較不那麼吃系統資源的像是Xfce、MATE、LXQt和LXDE等等的桌面環境。
+在Linux上，都可以依自己的喜好選擇。
+
+接著我們講一下視窗管理員，它是用來管理你使用的程式的視窗的位置和外觀的程式。
+緒如視窗的外框、放大縮小的按鈕等等都是視窗管理員管的。
+
+通常視窗管理員都會搭配桌面環境來使用，不管有些人喜歡單純使用視窗管理員，這樣對系統資源的要求又會進一步降低。
+不過缺點是使用者必須自己安裝其他必要的程式，像音效系統之類的等等，有點像你自己建造一個自己的桌面環境一樣。
+所以通常是使用Linux有一定經驗的人才會單獨使用視窗管理員。
 
 * 安裝Linux
+有了一點背景知識，現在該來實作了。
+你可以選擇要裝在Windows裡的虛擬機上，或是把硬碟騰出個空間，把它跟Windows裝在一起。
 
+這裡會使用Linux Mint 21的Cinnamon桌面環境版來示範。
+如果你有想要使用Linux Mint其他桌面環境版本的話或其他的發行版也行，安裝流程理論上來說是相似的。
+假如你有發行版選擇困難的話，可以用[[https://distrochooser.de/][這個網站]]，來幫助你選擇。
+
+** 需要準備的東西
+- 一台電腦（不要用的舊電腦也行）
+- 一個至少4GB的USB隨身碟（2GB好像也行，我不確定）
+
+** 製作USB映像檔
+1. 到[[https://linuxmint.com/download.php][Linux Mint的下載頁面]]，選擇Cinnamon Edition並按下Download按鈕。（當然你在這裡要選其他版本也是可以）
+   [[./images/iso_1.png]]
+
+2. 之後你會到像這樣的頁面，往下滑找台灣的節點下載即可。
+   [[./images/iso_2.png]]
+
+3. 接著下載[[https://rufus.ie/zh_TW/][Rufus]]，選擇可攜版即可。
+
+4. 插上USB隨身碟，打開Rufus。介面應該長得如下圖。
+   [[./images/iso_3.png]]
+
+5. 在第一列裝置那裡，應該可以看到你要用的USB隨身碟，選擇它。
+
+6. 接著按第二列的選擇，找到剛剛下載的iso檔案。
+
+7. 按最下面的執行即可。 *注意！USB隨身碟裡所有資料都會被抹除*
+
+** 進入Live USB
+1. 確定把安裝要用的USB隨身碟準備好後，將電腦重新開機。
+
+2. 參考這個網頁「Boot Menu」那列，在電腦開機時狂按對應按鍵來進入開機選單。（大部份是F12或Esc）
+
+3. 接著你應該會看到類似的畫面，選擇你插進去的USB，大部份情況下選擇UEFI開頭的即可。
+   以我這張圖為例，我就要選「UEFI: Sandisk, Partition 1」這個。
+   如果在安裝上遇到問題，就選USB開頭的再裝一次試看看。
+   [[./images/live_1.jpg]]
+
+4. 選完按下Enter後，你應該會看到這個畫面，選擇第一項即可。
+   [[./images/live_2.png]]
+
+5. 接著你就進到Linux Mint了！
+   [[./images/live_3.png]]
+
+** 主要安裝流程
+在進到Linux Mint的Live Environment後，你可以先四處看看，體驗一下，你在這個環境中做的變更都不會寫入到原本的USB中。
+等你滿足完你的好奇心後，就可以點桌面上那個「Install Linux Mint」的光碟圖示開始安裝了。
+1. 點擊兩下桌面上的光碟圖示後，可以在跳出來的這個畫面選取你想要的系統語言。
+   在這裡，我選擇繁體中文。
+   [[./images/install_1.png]]
+
+2. 接著下一步，選擇鍵盤的配置。如果你在上一步選的語言是中文的話，那麼它在這裡預設會給你Chinese的鍵盤配置。
+   不過我建議往下滑一點，使用「English (US)」的配置。
+   [[./images/install_2.png]]
+
+3. 接下來，勾選這個框框。
+   [[./images/install_3.png]]
+
+4. 如果你的電腦還有安裝其他系統，那麼這邊他會出現「將Linux Mint和XXX裝在一起的選項」。
+   如果你還想保留其他系統，就選擇那個選項。或你想直接把之前的系統抹掉，就選「清除磁碟並安裝Linux Mint」。
+   當然你如果知道磁碟應該要怎麼分割的話就選最後一項。
+   [[./images/install_4.png]]
+
+5. 這裡我假設你還想要保留Windows，所以我選第一個選項。
+   選下去後，它會問你空間要怎麼配。可以用中間那條線來分配大小。
+   左邊的「檔案」部份是你可以跟Windows一起存取的部份，而右邊的「Linux Mint」部份則是Linux專屬的檔案分區，Windows沒辦法存取。
+   *注意！請確定你有把Windows裡重要的檔案備份，有時候它可能會不小心洗掉你Windows中的檔案*
+   [[./images/install_5.png]]
+
+6. 在按下立即安裝後，應該會有兩個小視窗跳出來，閱讀之後覺得可以就下一步吧。
+   接下來，他會要你選擇時區。
+   [[./images/install_6.png]]
+
+7. 選好後，就要建立你的使用者帳號了。
+   除了你的名稱外，其餘的格子最好不要含空格，用減號（-）來代替空格。
+   將家目錄加密一般來說是不用勾選。
+   [[./images/install_7.png]]
+
+8. 按下繼續後，系統就會開始安裝了。
+   [[./images/install_8.png]]
+
+9. 等它跑完後，會跳出你要繼續用這個Live USB環境還是重開機。
+   所有你在Live USB做的變更都會消失。
+   這裡我直接選重開機。
+   [[./images/install_9.png]]
+
+10. 之後它會出現這個畫面，這時把你的USB隨身碟拔掉後，按下Enter即可。
+    [[./images/install_10.png]]
+
+恭喜你，你成功在電腦上安裝好Linux了！
+
+之後每次開機應該都會像這樣的選單，如果你要使用Windows的話在這裡選擇即可。
+[[./images/install_11.png]]
+   
 * Linux的日常使用
 
 * 一些Linux的技巧
